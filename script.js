@@ -67,7 +67,7 @@ async function getSongs(folder) {
     // attach an event listener to each song
     Array.from(document.querySelector(".songList").getElementsByTagName("li")).forEach((e) => {
         e.addEventListener("click", (element) => {
-            console.log(e.querySelector(".info").firstElementChild.innerHTML);
+            // console.log(e.querySelector(".info").firstElementChild.innerHTML);
             playMusic(e.querySelector(".info").firstElementChild.innerHTML.trim());
         })
     })
@@ -103,7 +103,7 @@ async function displayAlbums() {
             // get metadata of the folder
             let a = await fetch(`http://127.0.0.1:5500/songs/${folder}/info.json`);
             let response = await a.json();
-            console.log(response);
+            // console.log(response);
             cardContainer.innerHTML = cardContainer.innerHTML + `<div data-folder=${folder} class="card">
             <div class="play">
                 <img src="img/play-button.svg" alt="">
@@ -154,7 +154,7 @@ async function main() {
 
     // add an event listener to seekbar
     document.querySelector(".seekbar").addEventListener("click", (e) => {
-        console.log((e.offsetX / e.target.getBoundingClientRect().width) * 100);
+        // console.log((e.offsetX / e.target.getBoundingClientRect().width) * 100);
         let percent = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
         document.querySelector(".circle").style.left = percent + "%";
         currentSong.currentTime = ((currentSong.duration) * percent) / 100;
@@ -198,7 +198,7 @@ async function main() {
 
     // add an event to mute the track
     document.querySelector(".volume>img").addEventListener("click", (e) => {
-        console.log(e.target);
+        // console.log(e.target);
         if (e.target.src.includes("img/volume.svg")) {
             e.target.src = "img/mute.svg";
             currentSong.volume = 0;
