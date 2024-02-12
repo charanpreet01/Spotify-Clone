@@ -25,7 +25,7 @@ function secondsToMinutesSeconds(seconds) {
 async function getSongs(folder) {
 
     currFolder = folder;
-    let a = await fetch(`/${folder}/`);
+    let a = await fetch(`http://localhost:5500/${folder}/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
@@ -78,7 +78,7 @@ async function getSongs(folder) {
 let playMusic = (track, pause = false) => {
     // let audio = new Audio("/songs/" + track);
     // audio.play();
-    currentSong.src = `/${currFolder}/` + track;
+    currentSong.src = `http://localhost:5500/${currFolder}/` + track;
     if (!pause) {
         currentSong.play();
         play.src = "img/pause.svg";
@@ -88,7 +88,7 @@ let playMusic = (track, pause = false) => {
 }
 
 async function displayAlbums() {
-    let a = await fetch(`/songs/`);
+    let a = await fetch(`http://localhost:5500/songs/`);
     let response = await a.text();
     let div = document.createElement("div");
     div.innerHTML = response;
